@@ -1,17 +1,18 @@
 from django.db import models
-from django.db.models import QuerySet
+from tortoise.queryset import QuerySet
 
 
 # Create your models here.
 class Product(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Название')
+    title = models.CharField(max_length=300, verbose_name='Название товара')
     price = models.IntegerField(verbose_name='Цена')
 
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
-    objects: QuerySet
+    photo = models.ImageField(
+        verbose_name='Фотография',
+        upload_to="photos/%Y/%m/%d/"
+    )
 
-    def get_photo_url(self):
-        return self.photo.url
+    objects: QuerySet
 
     class Meta:
         verbose_name = 'Товар'
@@ -19,3 +20,7 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.title} | {self.price:,}тг"
+
+    @property
+    def string_price(self):
+        return f"{self.price:,}".replace(",", ".")
