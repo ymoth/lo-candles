@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from products.views import router
+from products.views import router, photo_image_return
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('', include(router.urls)),
+
+    path('photos/<int:year>/<str:month>/<str:day>/<str:photo_name>', photo_image_return)
 ]
