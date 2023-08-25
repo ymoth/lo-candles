@@ -11,17 +11,16 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'title', 'price',
-            'id', 'photo'
+            'title', 'price', 'photo'
         )
 
-    def get_photo_url(self, product: Product):
-        return product.photo.url
+    def get_photo(self, product: Product):
+        return product.photo.verbose_name
 
 
 # ViewSets define the view behavior.
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.select_related()
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
