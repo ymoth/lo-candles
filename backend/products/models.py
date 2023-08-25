@@ -12,6 +12,7 @@ class Product(models.Model):
         upload_to="photos/%Y/%m/%d/"
     )
 
+    is_top = models.BooleanField(default=False, verbose_name='Отображать на главной странице')
     objects: QuerySet
 
     class Meta:

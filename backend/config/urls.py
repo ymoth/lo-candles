@@ -28,5 +28,6 @@ urlpatterns = [
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/', include('users.urls')),
+    path('api/v1/products/', include('products.urls')),
     path('photos/<int:year>/<str:month>/<str:day>/<str:photo_name>', photo_image_return)
 ]
