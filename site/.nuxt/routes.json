@@ -2,13 +2,13 @@
   {
     "name": "PersonalCabinet",
     "path": "/PersonalCabinet",
-    "component": "C:\\\\Users\\\\topha\\\\Downloads\\\\Telegram Desktop\\\\site\\\\pages\\\\PersonalCabinet.vue",
+    "component": "C:\\\\Users\\\\topha\\\\OneDrive\\\\Документы\\\\GitHub\\\\lo-candles\\\\site\\\\pages\\\\PersonalCabinet.vue",
     "chunkName": "pages/PersonalCabinet"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\topha\\\\Downloads\\\\Telegram Desktop\\\\site\\\\pages\\\\index.vue",
+    "component": "C:\\\\Users\\\\topha\\\\OneDrive\\\\Документы\\\\GitHub\\\\lo-candles\\\\site\\\\pages\\\\index.vue",
     "chunkName": "pages/index"
   }
 ]
