@@ -1,12 +1,17 @@
 <template>
   <div>
-    <Nuxt />
+    <customHeader />
+    <main>
+      <Nuxt />
+    </main>
   </div>
 </template>
 
 <script>
+import customHeader from "~/components/CustomHeader";
 export default {
-  name: "default"
+  name: "default",
+  components: {customHeader}
 }
 </script>
 

@@ -3,7 +3,8 @@ export default {
   head: {
     title: 'site',
     htmlAttrs: {
-      lang: 'ru'
+      lang: 'ru',
+      'data-bs-theme': "light"
     },
     meta: [
       { charset: 'utf-8' },
@@ -40,12 +41,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://87.249.50.115:8000/api/v1',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -59,4 +62,38 @@ export default {
       },
     },
   },
+  auth: {
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        localStorage: {
+          prefix: 'auth.'
+        },
+        token: {
+          prefix: 'access_token.',
+          property: 'access_token',
+          maxAge: 84000,
+          type: 'Bearer'
+        },
+        refreshToken: {
+          prefix: 'refresh_token.',
+          property: 'refresh_token',
+          data: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 15,
+        },
+        user: {
+          property: 'user',
+          autoFetch: true,
+        },
+        endpoints: {
+          registration: { url: '/register', method: 'post'},
+          login: { url: '/login', method: 'post' },
+          refresh: {url: '/token/refresh', method: 'post' },
+          logout: { url: '/', method: 'post' },
+          user: { url: '/user', method: 'get' }
+        },
+
+      },
+    }
+  }
 }

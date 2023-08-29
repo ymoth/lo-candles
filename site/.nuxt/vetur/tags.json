@@ -1,8 +1,20 @@
 {
+  "Accordion": {
+    "description": "Auto imported from components/Accordion.vue"
+  },
   "AdvantagesCandles": {
     "description": "Auto imported from components/AdvantagesCandles.vue"
   },
   "CustomHeader": {
     "description": "Auto imported from components/CustomHeader.vue"
+  },
+  "Login": {
+    "description": "Auto imported from components/Login.vue"
+  },
+  "Products": {
+    "description": "Auto imported from components/Products.vue"
+  },
+  "Register": {
+    "description": "Auto imported from components/Register.vue"
   }
 }

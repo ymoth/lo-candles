@@ -16,7 +16,6 @@
           <div class="advantages__candles-item">
             <img :src="item.img" alt="" />
             <span>{{ item.text }}</span>
-            <div></div>
           </div>
         </div>
       </div>
@@ -71,6 +70,7 @@ export default {
   background: lightgray url("/advantagesCandles/bg.png") 50% / cover no-repeat;
   padding: 100px 0 38px 0;
   position: relative;
+  margin-bottom: 60px;
   &:after {
     content: "";
     position: absolute;
@@ -151,6 +151,61 @@ export default {
       img {
         position: absolute;
         right: -15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .advantages__candles {
+    padding: 30px;
+    margin-bottom: 30px;
+    &-title, &-subtitle {
+      h1, h2 {
+        font-size: 24px;
+      }
+    }
+    &-subtitle {
+      margin-bottom: 50px;
+    }
+    &-item {
+      span {
+        font-size: 18px;
+      }
+    }
+    .col-lg-6:nth-child(odd) {
+      .advantages__candles-item {
+        margin-bottom: 60px;
+        padding: 12px 12px;
+        img {
+          position: absolute;
+          left: 42%;
+          right: 0px;
+          bottom: 80%;
+          width: 50px;
+          height: 50px;
+          padding: 10px;
+        }
+      }
+    }
+    .col-lg-6:nth-child(even) {
+      .advantages__candles-item {
+        padding: 12px 12px;
+        margin-bottom: 60px;
+        img {
+          position: absolute;
+          left: 42%;
+          right: 0px;
+          bottom: 80%;
+          width: 50px;
+          height: 50px;
+          padding: 10px;
+        }
+      }
+    }
+    .col-lg-6:last-child {
+      .advantages__candles-item {
+        margin-bottom: 0px;
       }
     }
   }

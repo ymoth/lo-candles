@@ -1,18 +1,18 @@
 <template>
   <div>
-    <CustomHeader/>
     <main>
       <AdvantagesCandles />
+      <Products />
     </main>
   </div>
 </template>
 
 <script>
-import CustomHeader from "@/components/CustomHeader.vue";
 import AdvantagesCandles from "~/components/AdvantagesCandles";
+import Products from "~/components/Products";
 export default {
   components: {
-    CustomHeader,AdvantagesCandles
+   AdvantagesCandles, Products,
   }
 }
 </script>

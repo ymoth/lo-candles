@@ -1,5 +1,9 @@
+export { default as Accordion } from '../..\\components\\Accordion.vue'
 export { default as AdvantagesCandles } from '../..\\components\\AdvantagesCandles.vue'
 export { default as CustomHeader } from '../..\\components\\CustomHeader.vue'
+export { default as Login } from '../..\\components\\Login.vue'
+export { default as Products } from '../..\\components\\Products.vue'
+export { default as Register } from '../..\\components\\Register.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {
