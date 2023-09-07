@@ -1,8 +1,11 @@
+import json
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
 from rest_framework import serializers
 
+from confirm_email.views import SMTPMailer
 from users.models import User
 
 
@@ -35,10 +38,8 @@ class RegisterUserSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
         )
-
         user.set_password(validated_data['password'])
         user.save()
-
         return user
 
 
@@ -49,7 +50,20 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password', 'first_name', 'last_name')
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'created_at',
+
+            'is_admin',
+            'is_staff',
+            'is_superuser',
+            'last_login',
+            'is_verification',
+            'cart_data'
+        )
+
         extra_kwargs = {
             'password': {'write_only': True, 'min_length': 8},
         }

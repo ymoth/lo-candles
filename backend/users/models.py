@@ -41,10 +41,15 @@ class User(AbstractUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    is_verification = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['password']
 
     objects = CustomUserManager()
+    cart_data = models.JSONField(default=dict)
+    # product_id: {"count": 1}
 
     def has_perm(self, perm, obj=None):
         return True

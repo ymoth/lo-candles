@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Успешно подтверждено. </title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :focus,
+        :active {
+            outline: none;
+        }
+
+        a:focus,
+        a:active {
+            outline: none;
+        }
+
+        nav,
+        footer,
+        header,
+        aside {
+            display: block;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-size: 100%;
+            line-height: 1;
+            font-size: 14px;
+            -ms-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        input,
+        button,
+        textarea {
+            font-family: inherit;
+        }
+
+        input::-ms-clear {
+            display: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+
+        a,
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: 400;
+        }
+
+        .welcome {
+            padding: 30px 20px 70px 20px;
+            max-width: 500px;
+            width: 100%;
+            margin: 60px auto;
+            border: 1px solid #FFA3BB;
+            border-radius: 15px;
+        }
+
+        .welcome-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .welcome-title p {
+            color: #FFA3BB;
+            font-size: 24px;
+        }
+
+        .welcome-title img {
+            width: 75px;
+        }
+
+        .welcome-title h1 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 50px;
+            text-align: center;
+            color: #e04972;
+        }
+
+        .welcome-subtitle h2 {
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            color: gray;
+        }
+
+        .welcome-text {
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            color: gray
+        }
+
+        .welcome-text span {
+            color: #b47080;
+        }
+
+        .welcome-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .welcome-button button {
+            background: #e17082;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 22px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="welcome">
+    <div class="welcome-title">
+        <img src="logo.png" alt="">
+        <h1>Добро пожаловать,</h1>
+        <p>{{ first_name }} {{ last_name }}!</p>
+    </div>
+    <div class="welcome-subtitle">
+        <h2>Вы успешно зарегистрировались</h2>
+    </div>
+    <div class="welcome-text">
+        <p>Ваш логин: <span>{{ email }}</span></p>
+        <p>Ваш пароль: <span>{{ password }}</span></p>
+    </div>
+    <div class="welcome-button">
+        <button onclick="window.close()">
+            Закрыть
+        </button>
+    </div>
+</div>
+</body>
+</html>

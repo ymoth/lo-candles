@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, ListAPIView
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -33,20 +32,18 @@ def login(request):
     user = get_user_model().objects.filter(email=email).first()
     if user is None:
         raise exceptions.AuthenticationFailed('Пользователь не найден')
+
     if not user.check_password(password):
         raise exceptions.AuthenticationFailed('Не верный пароль')
 
     response = Response()
-
     token_endpoint = reverse(viewname='token_obtain_pair', request=request)
     tokens = requests.post(token_endpoint, data=request.data).json()
-
     response.data = {
         'access_token': tokens.get('access'),
         'refresh_token': tokens.get('refresh'),
         'email': user.email
     }
-
     return response
 
 
@@ -59,3 +56,5 @@ class CurrentLoggedInUser(ModelViewSet):
         user_profile = self.queryset.get(email=request.user.email)
         serializer = self.get_serializer(user_profile)
         return Response({'user': serializer.data})
+
+

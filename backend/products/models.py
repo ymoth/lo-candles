@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy
 from tortoise.queryset import QuerySet
 
 
@@ -12,8 +13,21 @@ class Product(models.Model):
         upload_to="photos/%Y/%m/%d/"
     )
 
+    class CategoriesChoices(models.TextChoices):
+        CATEGORY_1 = "Ароматизированные", gettext_lazy("X1")
+        CATEGORY_2 = "Ещё какие-то", gettext_lazy("X2")
+
+    category = models.CharField(
+        max_length=30,
+        choices=CategoriesChoices.choices,
+        default=CategoriesChoices.CATEGORY_1,
+        verbose_name='Категория'
+    )
+
     is_top = models.BooleanField(default=False, verbose_name='Отображать на главной странице')
-    objects: QuerySet
+    is_published = models.BooleanField(default=True, verbose_name='Отображать на сайте каталога')
+
+    objects: QuerySet['Product']
 
     class Meta:
         verbose_name = 'Товар'
@@ -21,7 +35,3 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.title} | {self.price:,}тг"
-
-    @property
-    def string_price(self):
-        return f"{self.price:,}".replace(",", ".")

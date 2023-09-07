@@ -1,7 +1,7 @@
 from django.urls import path
 
-from products.views import ReturnTopProducts
+from products.views import ReturnTopProducts, GetProductsBase
 
 urlpatterns = [
-    path('topList', ReturnTopProducts.as_view(), name='top_products')
+    path('baseList', GetProductsBase.as_view({"get": "retrieve"}), name='base_list_products')
 ]
