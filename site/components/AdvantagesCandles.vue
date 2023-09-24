@@ -36,7 +36,7 @@ export default {
         },
         {
           id: 2,
-          text: "Расслабляющая обстановка",
+          text: "Вписываются в любой интерьер",
           img: "/advantagesCandles/lamp.svg",
         },
         {

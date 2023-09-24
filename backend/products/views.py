@@ -1,18 +1,15 @@
 import os
 
 from django.http import HttpRequest, HttpResponse
-from rest_framework.decorators import api_view
 
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from tortoise.queryset import QuerySet
 
 from products.models import Product
-from products.serializers import ProductListSerializer
 from rest_framework.response import Response
 
+import tortoise
 
 class ReturnTopProducts(APIView):
     permission_classes = (AllowAny,)
@@ -68,3 +65,4 @@ class GetProductsBase(ModelViewSet):
         if data.get('payload'):
             return Product.objects.filter(**data['payload']['filtering'])
         return Product.objects.filter(is_published=True)
+

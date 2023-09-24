@@ -1,20 +1,68 @@
 {
+  "About": {
+    "description": "Auto imported from components/About.vue"
+  },
   "Accordion": {
     "description": "Auto imported from components/Accordion.vue"
   },
   "AdvantagesCandles": {
     "description": "Auto imported from components/AdvantagesCandles.vue"
   },
+  "CustomFooter": {
+    "description": "Auto imported from components/CustomFooter.vue"
+  },
   "CustomHeader": {
     "description": "Auto imported from components/CustomHeader.vue"
   },
+  "EmailConfirmation": {
+    "description": "Auto imported from components/EmailConfirmation.vue"
+  },
   "Login": {
     "description": "Auto imported from components/Login.vue"
+  },
+  "MakingOrder": {
+    "description": "Auto imported from components/MakingOrder.vue"
+  },
+  "MakingOrderCart": {
+    "description": "Auto imported from components/MakingOrderCart.vue"
+  },
+  "MakingOrderCompletion": {
+    "description": "Auto imported from components/MakingOrderCompletion.vue"
+  },
+  "MakingOrderConfirm": {
+    "description": "Auto imported from components/MakingOrderConfirm.vue"
+  },
+  "MakingOrderDelivery": {
+    "description": "Auto imported from components/MakingOrderDelivery.vue"
+  },
+  "Notifications": {
+    "description": "Auto imported from components/Notifications.vue"
   },
   "Products": {
     "description": "Auto imported from components/Products.vue"
   },
   "Register": {
     "description": "Auto imported from components/Register.vue"
+  },
+  "Spinner": {
+    "description": "Auto imported from components/Spinner.vue"
+  },
+  "TopProducts": {
+    "description": "Auto imported from components/TopProducts.vue"
+  },
+  "UserData": {
+    "description": "Auto imported from components/UserData.vue"
+  },
+  "MyHistoryOrder": {
+    "description": "Auto imported from components/myHistoryOrder.vue"
+  },
+  "MyOrder": {
+    "description": "Auto imported from components/myOrder.vue"
+  },
+  "PageTransition": {
+    "description": "Auto imported from components/pageTransition.vue"
+  },
+  "Watcher": {
+    "description": "Auto imported from components/watcher/watcher.vue"
   }
 }

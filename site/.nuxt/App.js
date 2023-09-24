@@ -3,16 +3,17 @@ import { decode, parsePath, withoutBase, withoutTrailingSlash, normalizeURL } fr
 
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
 import NuxtError from './components/nuxt-error.vue'
-import NuxtLoading from './components/nuxt-loading.vue'
+import NuxtLoading from '~/components/Spinner.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '..\\assets\\css\\null.css'
+import '../assets/css/null.css'
 
-import '..\\node_modules\\bootstrap\\dist\\css\\bootstrap.min.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-import _6f6c098b from '..\\layouts\\default.vue'
+import _6f6c098b from '../layouts/default.vue'
+import _630f343e from '../layouts/verify-email.vue'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_default": sanitizeComponent(_6f6c098b),"_verify-email": sanitizeComponent(_630f343e) }
 
 export default {
   render (h, props) {

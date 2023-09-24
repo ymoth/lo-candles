@@ -99,7 +99,7 @@ class UserRegister(AsyncWebsocketConsumer):
     async def type_send_email_code(self, payload: T) -> None:
         try:
             smtp_server = SMTPMailer(email=self._base64_read_data()['email'])
-            smtp_server.answer_access_type(self.payload, decoded=self._base64_read_data())
+            smtp_server.send_email_registration_code(self.payload, decoded=self._base64_read_data())
             await self.send(text_data=json.dumps({"success": "send code"}))
         except Exception as ex:
             await self.send(text_data=json.dumps({"error": f"{ex}"}))

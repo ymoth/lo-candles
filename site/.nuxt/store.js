@@ -17,14 +17,18 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('..\\store\\TopProductStore.js'), 'TopProductStore.js')
+  resolveStoreModules(require('../store/Cart.js'), 'Cart.js')
+  resolveStoreModules(require('../store/historyOrder.js'), 'historyOrder.js')
+  resolveStoreModules(require('../store/ProductStore.js'), 'ProductStore.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '..\\store\\TopProductStore.js',
+      '../store/Cart.js',
+      '../store/historyOrder.js',
+      '../store/ProductStore.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()

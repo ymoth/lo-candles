@@ -13,26 +13,19 @@
           <div class="col-lg-7">
             <div class="header__nav">
               <ul>
-                <li>
-                  <nuxt-link to="/">О компании</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/">Отзывы</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/">Каталог</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/">Контакты</nuxt-link>
-                </li>
+                <li><nuxt-link to="/" exact-active-class="active-link">Главная</nuxt-link></li>
+                <li><nuxt-link to="/about" exact-active-class="active-link">О компании</nuxt-link></li>
+                <li><nuxt-link to="/catalog" exact-active-class="active-link">Каталог</nuxt-link></li>
               </ul>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="header__nav">
-              <button class="header__nav-cart" v-show="this.$auth.user">
-                Корзина
-                <img src="/header/cart.svg" alt="" />
+              <button class="header__nav-login" v-show="this.$auth.user">
+                <nuxt-link to="/personalCabinet/makingOrder">
+                  Оформить заказ
+                  <img src="/cabinet/delivery.svg" alt="" />
+                </nuxt-link>
               </button>
               <button class="header__nav-login" v-if="this.$auth.user">
                 <nuxt-link to="/personalCabinet">
@@ -50,23 +43,14 @@
       </div>
       <div class="header__burger" :class="{ open: openMenu }">
         <div class="row">
-          <div class="col-3">
+          <div class="col-10">
             <div class="header__burger-logo">
-              <img src="/header/logo.png" alt="" />
+              <nuxt-link to="/">
+                <img src="/header/logo.png" alt="" />
+              </nuxt-link>
             </div>
           </div>
-          <div class="col-7">
-            <div class="header__nav">
-              <button class="header__nav-cart">
-                Корзина
-                <img src="/header/cart.svg" alt="" />
-              </button>
-              <button class="header__nav-login" @click="openLogin = !openLogin">
-                Вход
-                <img src="/header/login.svg" alt="" />
-              </button>
-            </div>
-          </div>
+
           <div class="col-2">
             <div class="header__burger-menu" :class="{ open: openMenu }">
               <div class="header__burger-menu-icon" @click="openMenu = !openMenu">
@@ -77,19 +61,35 @@
             </div>
           </div>
           <ul class="header__burger-menu-items" :class="{ open: openMenu }">
-            <li>
-              <nuxt-link to="/">О компании</nuxt-link>
+            <li @click="openMenu = false">
+              <nuxt-link to="/about" >О компании</nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/">Отзывы</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/">Каталог</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/">Контакты</nuxt-link>
+            <li @click="openMenu = false">
+              <nuxt-link to="/catalog">Каталог</nuxt-link>
             </li>
           </ul>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="header__nav">
+              <button class="header__nav-login" v-show="this.$auth.user">
+                <nuxt-link to="/personalCabinet/makingOrder">
+                  Оформить заказ
+                  <img src="/cabinet/delivery.svg" alt="" />
+                </nuxt-link>
+              </button>
+              <button class="header__nav-login" v-if="this.$auth.user">
+                <nuxt-link to="/personalCabinet">
+                  {{ capitalizedFirstName }}
+                  <img src="/header/login.svg" alt="" />
+                </nuxt-link>
+              </button>
+              <button class="header__nav-login" v-else @click="openLogin = !openLogin">
+                Вход
+                <img src="/header/login.svg" alt="" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -99,19 +99,23 @@
       :open-register="openRegister"
       @closeLoginPopup="controlPopup"
       @openRegisterPopup="controlPopup"
+      @notificationLogin="notificationLogin"
     />
     <Register
       v-if="openRegister === true"
       :open-register="openRegister"
       @closeRegisterPopup="controlPopup"
       @openLoginPopup="controlPopup"
+      @openConfirmPopup="controlPopup"
     />
+    <notifications :messages="messages" />
   </header>
 </template>
 
 <script>
 import Login from "~/components/Login";
 import Register from "~/components/Register";
+import notifications from "~/components/Notifications";
 export default {
   name: "CustomHeader",
   data() {
@@ -119,10 +123,11 @@ export default {
       openMenu: false,
       openLogin: false,
       openRegister: false,
+      messages: []
     }
   },
   components: {
-    Login, Register
+    Login, Register, notifications
   },
   methods: {
     controlPopup(data) {
@@ -132,6 +137,23 @@ export default {
       } else {
         this.openLogin = false
         this.openRegister = data.status
+      }
+    },
+    notificationLogin(data) {
+      if(data === 'register') {
+        this.messages.unshift({
+          text: 'Вы успешно зарегистрировались и вошли в аккаунт',
+          status: 'check',
+          icon: 'checkMark.svg',
+          id: Date.now().toLocaleString()
+        })
+      } else {
+        this.messages.unshift({
+          text: 'Вы успешно вошли',
+          status: 'check',
+          icon: 'checkMark.svg',
+          id: Date.now().toLocaleString()
+        })
       }
     },
   },
@@ -154,9 +176,17 @@ export default {
 </script>
 
 <style lang="scss">
+header {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
 .header {
   margin: 15px 0;
-  .col-lg-7, .col-lg-4 {
+  .col-lg-7 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .col-lg-4 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -165,11 +195,14 @@ export default {
     display: flex;
     column-gap: 60px;
     ul {
+      position: relative;
       column-gap: 30px;
       display: flex;
       margin-bottom: 0;
       li {
+        position: relative;
         a {
+          position: relative;
           font-size: 24px;
           font-weight: 600;
           text-decoration: none;
@@ -185,9 +218,36 @@ export default {
       }
     }
   }
+  .header__nav ul li a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FF6F95;
+    transition: width 0.3s ease; /* Анимация */
+  }
+
+  .header__nav ul li a:hover::before {
+    width: 100%;
+  }
+  .header__nav ul li a {
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .header__nav ul li a:hover {
+    color: #FF6F95;
+  }
   .header__logo {
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
   }
 }
 .header__burger {
@@ -263,12 +323,24 @@ export default {
       }
     }
   }
+  .col-7 {
+    display: flex;
+    justify-content: flex-end;
+  }
   .header__nav {
     position: relative;
     z-index: 4;
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
+    &-login {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+      a {
+        text-decoration: none;
+      }
+    }
   }
   .header__burger.open {
     z-index: 10;
@@ -281,7 +353,7 @@ export default {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 132%;
       background: #fff;
       z-index: 3;
     }
@@ -292,6 +364,7 @@ export default {
     align-items: center;
     background: #fff;
     z-index: 3;
+    padding: 30px;
     li {
       font-size: 28px;
       a {

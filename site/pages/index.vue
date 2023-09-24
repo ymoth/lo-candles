@@ -2,17 +2,27 @@
   <div>
     <main>
       <AdvantagesCandles />
-      <Products />
+      <TopProducts />
     </main>
   </div>
 </template>
 
 <script>
 import AdvantagesCandles from "~/components/AdvantagesCandles";
-import Products from "~/components/Products";
+import TopProducts from "~/components/TopProducts";
 export default {
   components: {
-   AdvantagesCandles, Products,
+   AdvantagesCandles, TopProducts,
+  },
+  methods: {
+    scrollToTop() {
+      if (process.client) {
+        window.scrollTo(0, 0);
+      }
+    }
+  },
+  mounted() {
+    this.scrollToTop();
   }
 }
 </script>

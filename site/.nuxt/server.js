@@ -169,7 +169,7 @@ const render404Page = () => {
   /*
   ** Call global middleware (nuxt.config.js)
   */
-  let midd = []
+  let midd = ["emailConfirm"]
     midd = midd.map((name) => {
       if (typeof name === 'function') {
         return name

@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<style>
+    body {
+        background: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400/86fdf8144091969.62861af96764d.jpg) no-repeat;
+        background-size: cover
+    }
+
+</style>
+{% endblock %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+
+{% block nav-global %}
+<script>
+    document.querySelectorAll('html')[0].setAttribute('data-theme', 'light')
+</script>
+{% endblock %}

@@ -65,6 +65,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '100/minute'
+    }
 }
 
 MIDDLEWARE = [
@@ -108,6 +112,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = ['https://dev.aromatic.kz', 'https://aromatic.kz']
+
+CSRF_COOKIE_DOMAIN = 'dev.aromatic.kz'
+
+CORS_ORIGIN_WHITELIST = (
+    'https://dev.aromatic.kz',
+)
 
 CHANNEL_LAYERS = {
     'default': {

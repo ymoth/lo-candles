@@ -1,14 +1,51 @@
 [
   {
-    "name": "PersonalCabinet",
-    "path": "/PersonalCabinet",
-    "component": "C:\\\\Users\\\\topha\\\\OneDrive\\\\Документы\\\\GitHub\\\\lo-candles\\\\site\\\\pages\\\\PersonalCabinet.vue",
-    "chunkName": "pages/PersonalCabinet"
+    "name": "about",
+    "path": "/about",
+    "component": "/root/AromaticCandles/site/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_fbdbe9ea"
+  },
+  {
+    "name": "catalog",
+    "path": "/catalog",
+    "component": "/root/AromaticCandles/site/pages/catalog.vue",
+    "chunkName": "pages/catalog",
+    "_name": "_09bfe017"
+  },
+  {
+    "name": "personalCabinet",
+    "path": "/personalCabinet",
+    "component": "/root/AromaticCandles/site/pages/personalCabinet/index.vue",
+    "chunkName": "pages/personalCabinet/index",
+    "_name": "_8cbc570e"
+  },
+  {
+    "name": "verificationEmail",
+    "path": "/verificationEmail",
+    "component": "/root/AromaticCandles/site/pages/verificationEmail.vue",
+    "chunkName": "pages/verificationEmail",
+    "_name": "_ab5aba82"
+  },
+  {
+    "name": "personalCabinet-makingOrder",
+    "path": "/personalCabinet/makingOrder",
+    "component": "/root/AromaticCandles/site/pages/personalCabinet/makingOrder.vue",
+    "chunkName": "pages/personalCabinet/makingOrder",
+    "_name": "_8513a26c"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\topha\\\\OneDrive\\\\Документы\\\\GitHub\\\\lo-candles\\\\site\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "/root/AromaticCandles/site/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_bc6c3460"
+  },
+  {
+    "name": "personalCabinet-orderDetail-id",
+    "path": "/personalCabinet/orderDetail/:id?",
+    "component": "/root/AromaticCandles/site/pages/personalCabinet/orderDetail/_id.vue",
+    "chunkName": "pages/personalCabinet/orderDetail/_id",
+    "_name": "_57776c5e"
   }
 ]

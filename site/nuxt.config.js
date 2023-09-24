@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'site',
+    title: 'AromaticCandles',
     htmlAttrs: {
       lang: 'ru',
       'data-bs-theme': "light"
@@ -13,7 +13,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
       { rel: "preconnect", href: "https://fonts.googleapis.com"},
       { rel: "preconnect", href: "https://fonts.gstatic.com"},
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap"},
@@ -28,6 +28,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/formatNumber.js', mode: 'client' },
+    { src: '~/plugins/vMask.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.de v/config-components
@@ -43,12 +45,13 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'cookie-universal-nuxt',
+    'vue-yandex-maps/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://87.249.50.115:8000/api/v1',
+    baseURL: 'https://dev.aromatic.kz/api/v1',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -71,15 +74,15 @@ export default {
         },
         token: {
           prefix: 'access_token.',
-          property: 'access_token',
-          maxAge: 84000,
+          property: 'access',
+          maxAge: 600,
           type: 'Bearer'
         },
         refreshToken: {
-          prefix: 'refresh_token.',
+          prefix: 'refresh_token',
           property: 'refresh_token',
-          data: 'refresh_token',
-          maxAge: 60 * 60 * 24 * 15,
+          data: 'refresh',
+          maxAge: 3600 * 24 * 3,
         },
         user: {
           property: 'user',
@@ -88,12 +91,22 @@ export default {
         endpoints: {
           registration: { url: '/register', method: 'post'},
           login: { url: '/login', method: 'post' },
-          refresh: {url: '/token/refresh', method: 'post' },
-          logout: { url: '/', method: 'post' },
-          user: { url: '/user', method: 'get' }
+          refresh: { url: '/token/refresh/', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/user', method: 'get' },
         },
-
       },
     }
-  }
+  },
+
+  loading: '~/components/Spinner.vue',
+
+  yandexMaps: {
+    apiKey: 'd788c73c-29d9-479c-89da-856189171458',
+    lang: 'ru_RU',
+  },
+
+  router: {
+    middleware: 'emailConfirm',
+  },
 }

@@ -1,5 +1,5 @@
+from django.db.models import QuerySet
 from django.http import HttpRequest
-from tortoise.queryset import QuerySet
 
 from products.models import Product
 
@@ -65,5 +65,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
-admin.site.site_title = 'LO-Candle | Администрирование'
-admin.site.site_header = 'LO-Candle | Администрирование'
+admin.site.site_title = 'Aromatic.kz | Администрирование'
+admin.site.site_header = 'Aromatic.kz | Администрирование'

@@ -11,7 +11,7 @@ class GetContacts(APIView):
             data={
                 "status": "success",
                 "contacts": {
-                    "instagram": "https://instagram.com/",
+                    "instagram": "https://www.instagram.com/aromatic_svechi/",
                     "whatsapp": "https://wa.me/+77787747039",
                     "telegram": "https://t.me/+77787747039",
                 }

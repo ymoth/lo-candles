@@ -1,11 +1,8 @@
-import json
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
 from rest_framework import serializers
 
-from confirm_email.views import SMTPMailer
 from users.models import User
 
 
@@ -61,7 +58,8 @@ class UserSerializer(serializers.ModelSerializer):
             'is_superuser',
             'last_login',
             'is_verification',
-            'cart_data'
+            'cart_data',
+            'email'
         )
 
         extra_kwargs = {

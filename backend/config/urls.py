@@ -28,8 +28,10 @@ from rest_framework_simplejwt.views import (
 from config import settings
 from config.contacts import GetContacts
 from config.logout import LogoutView
-from confirm_email.views import accessing_email
+from confirm_email.views import APIConfirmAccountHandler
+
 from products.views import photo_image_return
+from users.views import resset_user_password
 
 
 def index_handler(request: HttpRequest):
@@ -50,7 +52,9 @@ urlpatterns = [
     path('api/v1/products/', include('products.urls')),
     path('api/v1/orders/', include('orders.urls')),
     path('api/v1/cart-system/', include('trash.urls')),
-    path('confirmEmail/<str:b64data>', accessing_email)
+
+    path('api/v1/resetPassword', resset_user_password),
+    path('api/v1/confirmEmail', APIConfirmAccountHandler.as_view())
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

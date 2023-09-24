@@ -4,8 +4,13 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _383f7575 = () => interopDefault(import('..\\pages\\PersonalCabinet.vue' /* webpackChunkName: "pages/PersonalCabinet" */))
-const _23e49faf = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _fbdbe9ea = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _09bfe017 = () => interopDefault(import('../pages/catalog.vue' /* webpackChunkName: "pages/catalog" */))
+const _8cbc570e = () => interopDefault(import('../pages/personalCabinet/index.vue' /* webpackChunkName: "pages/personalCabinet/index" */))
+const _ab5aba82 = () => interopDefault(import('../pages/verificationEmail.vue' /* webpackChunkName: "pages/verificationEmail" */))
+const _8513a26c = () => interopDefault(import('../pages/personalCabinet/makingOrder.vue' /* webpackChunkName: "pages/personalCabinet/makingOrder" */))
+const _bc6c3460 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _57776c5e = () => interopDefault(import('../pages/personalCabinet/orderDetail/_id.vue' /* webpackChunkName: "pages/personalCabinet/orderDetail/_id" */))
 
 const emptyFn = () => {}
 
@@ -19,13 +24,33 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/PersonalCabinet",
-    component: _383f7575,
-    name: "PersonalCabinet"
+    path: "/about",
+    component: _fbdbe9ea,
+    name: "about"
+  }, {
+    path: "/catalog",
+    component: _09bfe017,
+    name: "catalog"
+  }, {
+    path: "/personalCabinet",
+    component: _8cbc570e,
+    name: "personalCabinet"
+  }, {
+    path: "/verificationEmail",
+    component: _ab5aba82,
+    name: "verificationEmail"
+  }, {
+    path: "/personalCabinet/makingOrder",
+    component: _8513a26c,
+    name: "personalCabinet-makingOrder"
   }, {
     path: "/",
-    component: _23e49faf,
+    component: _bc6c3460,
     name: "index"
+  }, {
+    path: "/personalCabinet/orderDetail/:id?",
+    component: _57776c5e,
+    name: "personalCabinet-orderDetail-id"
   }],
 
   fallback: false

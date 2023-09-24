@@ -61,6 +61,10 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 a,
 a:visited {
   text-decoration: none;
@@ -101,3 +105,32 @@ h6 {
   align-items: center;
   z-index: 20;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.active-link {
+  color: #FF6F95 !important;
+  position: relative;
+}
+
+.active-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* Толщина полоски */
+  background-color: #FF6F95;
+  transition: width 0.3s ease; /* Анимация */
+}
+
+.active-link:hover::before {
+  width: 100%;
+}
+
+

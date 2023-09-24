@@ -1,6 +1,6 @@
 from django.db import models
+from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy
-from tortoise.queryset import QuerySet
 
 
 # Create your models here.
@@ -35,3 +35,5 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.title} | {self.price:,}тг"
+
+

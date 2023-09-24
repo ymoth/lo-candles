@@ -47,15 +47,15 @@ export default function (ctx, inject) {
   },
   "token": {
     "prefix": "access_token.",
-    "property": "access_token",
-    "maxAge": 84000,
+    "property": "access",
+    "maxAge": 600,
     "type": "Bearer"
   },
   "refreshToken": {
-    "prefix": "refresh_token.",
+    "prefix": "refresh_token",
     "property": "refresh_token",
-    "data": "refresh_token",
-    "maxAge": 1296000
+    "data": "refresh",
+    "maxAge": 259200
   },
   "user": {
     "property": "user",
@@ -71,11 +71,11 @@ export default function (ctx, inject) {
       "method": "post"
     },
     "refresh": {
-      "url": "/token/refresh",
+      "url": "/token/refresh/",
       "method": "post"
     },
     "logout": {
-      "url": "/",
+      "url": "/logout",
       "method": "post"
     },
     "user": {
