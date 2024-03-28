@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_r24_gcwqg-%4zp=48cqg(=16tuh(q!&j+=nl6vlljkfm$#!i!'
+SECRET_KEY = '$SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,10 +31,10 @@ ALLOWED_HOSTS = ['*']
 SMTP_SERVER_NAME = 'smtp.yandex.com'
 SMTP_SERVER_PORT = 587
 
-APPLICATION_NAME = 'steamerssshop@yandex.ru'
-APPLICATION_PASSWORD = 'yumqutgoqxiemtku'
+APPLICATION_NAME = 'aromatic@yandex.ru'
+APPLICATION_PASSWORD = '1'
 
-TELEGRAM_API_TOKEN = '6515406189:AAHtze6PuxHhAhjfGrbgrR9tBa-Oe7O9N80'
+TELEGRAM_API_TOKEN = '$ACCESS_TOKEN'
 
 # Application definition
 
